@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크루셔틀 계정 삭제 요청</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007AFF;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #007AFF;
+            border-bottom: 2px solid #007AFF;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 25px;
+        }
+        .highlight {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-left: 4px solid #007AFF;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .contact-info {
+            background-color: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #007AFF;
+        }
+        .required {
+            color: #dc3545;
+        }
+        .submit-btn {
+            background-color: #007AFF;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+        .back-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .back-link a {
+            color: #007AFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a href="index.html">← 개인정보 처리방침으로 돌아가기</a>
+        </div>
+        
+        <h1>🗑️ 계정 삭제 요청</h1>
+        
+        <div class="highlight">
+            <strong>크루셔틀 (Crew Shuttle)</strong>은 사용자의 개인정보 보호를 최우선으로 하며, 
+            개인정보보호법 및 관련 법령에 따라 계정 삭제 요청을 처리합니다.
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ 주의사항</strong><br>
+            계정을 삭제하면 모든 데이터가 영구적으로 삭제되며, 복구할 수 없습니다. 
+            삭제 전에 필요한 데이터를 백업하시기 바랍니다.
+        </div>
+
+        <h2>계정 삭제 요청 양식</h2>
+        <p>아래 양식을 작성하여 계정 삭제를 요청해 주세요. 요청 후 30일 이내에 처리됩니다.</p>
+
+        <form id="deletionForm" onsubmit="submitForm(event)">
+            <div class="form-group">
+                <label for="email">이메일 주소 <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required 
+                       placeholder="가입 시 사용한 이메일 주소를 입력하세요">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">전화번호 <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required 
+                       placeholder="가입 시 사용한 전화번호를 입력하세요">
+            </div>
+
+            <div class="form-group">
+                <label for="name">이름 <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required 
+                       placeholder="가입 시 사용한 이름을 입력하세요">
+            </div>
+
+            <div class="form-group">
+                <label for="reason">삭제 사유</label>
+                <select id="reason" name="reason">
+                    <option value="">삭제 사유를 선택하세요</option>
+                    <option value="service_discontinuation">서비스 이용 중단</option>
+                    <option value="privacy_concerns">개인정보 보호 우려</option>
+                    <option value="duplicate_account">중복 계정</option>
+                    <option value="other">기타</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="details">상세 사유 (선택사항)</label>
+                <textarea id="details" name="details" rows="4" 
+                          placeholder="삭제 사유에 대한 추가 설명을 입력하세요"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="confirm" name="confirm" required>
+                    계정 삭제 시 모든 데이터가 영구적으로 삭제되며 복구할 수 없음을 이해하고 동의합니다.
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">계정 삭제 요청 제출</button>
+        </form>
+
+        <h2>처리 절차</h2>
+        <ol>
+            <li><strong>요청 접수</strong>: 위 양식을 통해 삭제 요청을 받습니다.</li>
+            <li><strong>신원 확인</strong>: 제공된 정보를 통해 본인 여부를 확인합니다.</li>
+            <li><strong>데이터 검토</strong>: 삭제 요청된 계정의 데이터를 검토합니다.</li>
+            <li><strong>계정 삭제</strong>: 확인 후 30일 이내에 계정 및 관련 데이터를 삭제합니다.</li>
+            <li><strong>완료 통보</strong>: 삭제 완료를 이메일로 통보합니다.</li>
+        </ol>
+
+        <h2>문의 및 도움말</h2>
+        <div class="contact-info">
+            <p><strong>개인정보 보호책임자</strong></p>
+            <ul>
+                <li>이름: [개발자명]</li>
+                <li>연락처: lupang18@gmail.com</li>
+                <li>직책: 개발자</li>
+            </ul>
+            <p><strong>계정 삭제 관련 문의</strong>: lupang18@gmail.com</p>
+        </div>
+
+        <div class="footer">
+            <p><strong>시행일자</strong>: 2024년 12월 19일</p>
+            <p><strong>최종 수정일</strong>: 2024년 12월 19일</p>
+        </div>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
+            
+            // 버튼 비활성화 및 텍스트 변경
+            submitBtn.disabled = true;
+            submitBtn.textContent = '처리 중...';
+            
+            // 폼 데이터 수집
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // 실제 구현에서는 서버로 데이터를 전송
+            // 여기서는 시뮬레이션
+            setTimeout(() => {
+                alert('계정 삭제 요청이 성공적으로 접수되었습니다.\n\n요청 번호: ' + Date.now() + '\n\n처리 기간: 최대 30일\n\n처리 완료 시 이메일로 통보드립니다.');
+                
+                // 폼 초기화
+                event.target.reset();
+                
+                // 버튼 복원
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }, 2000);
+        }
+        
+        // 필수 필드 검증
+        document.getElementById('deletionForm').addEventListener('input', function() {
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const name = document.getElementById('name').value;
+            const confirm = document.getElementById('confirm').checked;
+            
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (email && phone && name && confirm) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
